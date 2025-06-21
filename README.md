@@ -1,126 +1,106 @@
+# Travelling Salesman Problem Solver using Genetic Algorithm in C
 
-# Traveling Salesman Problem Solver Using Genetic Algorithm
-
-This program solves the Traveling Salesman Problem (TSP) using a Genetic Algorithm (GA). The objective is to find the shortest route that visits all given cities exactly once and returns to the starting city.
-
-The program is flexible, allowing users to:
-
-- Use a city database loaded from a file or generate cities randomly.
-
-- Customize genetic algorithm parameters like mutation rate and    population size.
-
-- Visualize the solution as an SVG file.
-
+This project provides a solution to the Travelling Salesman Problem (TSP) using a Genetic Algorithm. The aim is to find the shortest possible route that visits each city exactly once and returns to the starting city. The implementation is done entirely in the C programming language.
 
 ## Features
 
-- Random City Generation: Generate a random city database using prefixes and suffixes for city names
-- File-Based City Database: Load city data from a user-provided CSV file.
-- Genetic Algorithm:
-  * Fitness-based route selection.
-  * Mutation and crossover operations to improve the solution.
-  * SVG Visualization: Export the best route as an SVG file for easy visualization.
-  * Interactive Menu: Options to reselect cities, load a new database, or save the best route visualization.
+- Random city generation with intelligent naming
+- Option to load cities from a CSV file
+- Customizable genetic algorithm parameters including population size, mutation rate, crossover rate, and number of generations
+- Command-line interface for parameter configuration
+- Menu-driven interactive interface for city and database selection
+- Visualization of the best route using SVG graphics
 
+## Technologies Used
+
+- Language: C
+- Standard Libraries: stdio.h, stdlib.h, math.h, time.h
+- Algorithms: Genetic Algorithm including selection, mutation, and crossover
+- Concepts: Euclidean Distance, fitness evaluation, randomization
 
 ## Compilation and Execution
 
 ### Prerequisites
-Ensure you have a C compiler installed (e.g., GCC)
 
-### Compilation
+A C compiler such as GCC must be installed on the system.
 
-```bash
-  gcc -Wall -o result ProgramMain.c tspSolver.c -lm
+### Compilation Command
+
+```
+gcc -Wall -o result programMain.c tspSolver.c -lm
 ```
 
-### Execution
+### Execution Command
 
-```bash
-  ./result [options]
+```
+./result
 ```
 
-## Command Line options
+## Command-Line Options
 
-Use these options to customize the behavior of the genetic algorithm:
+- -c [value]: Set the maximum number of cities (default is 100)
+- -p [value]: Set the population size (default is 500)
+- -g [value]: Set the number of generations (default is 5000)
+- -m [value]: Set the mutation rate (default is 0.08)
+- -x [value]: Set the crossover rate (default is 0.85)
+- -h: Display the help menu
 
-#### 1. `-c [value]` Set the maximum number of cities (default: 100). 
-
-#### 2. `-p [value]` Set the population size for the algorithm (default: 500). 
-
-#### 3. `-g [value]` Set the number of generations (default: 5000). 
-
-#### 4. `-m [value]` Set the mutation rate (default: 0.08). 
- 
-#### 5. `-x [value]`) Set the crossover rate (default: 0.85). 
-
-#### 6. `-h` Display the help menu. 
-
-
-
-
-
-
-
-## City DataBase
+## City Database Options
 
 ### Random Generation
-The program generates between 10 and 40 cities with random coordinates and names.
 
-## File Format
-If loading from a file, ensure it is in the following CSV format:
+Generates between 10 and 40 cities with randomized coordinates and names based on predefined prefixes and suffixes.
 
-```bash
+### CSV File Input
+
+Accepts city data in the following format:
+
+```
 ID,CityName,X,Y
 0,New York,40.7128,-74.0060
 1,Tokyo,35.6895,139.6917
 ...
 ```
 
-### Interactive Menu
+## Sample Output
 
-After finding the best route, the program offers the following options:
-
-- Back to City Selection: Modify the selected cities for the route.
-- Back to Database Selection: Reload the city database from a file or generate new cities.
-- Save Route Visualization: Save the best route as an SVG file.
-- Exit the Program: Terminate the program.
-
-## Output
-
-- Best Route: Displays the total distance and the optimal path.
-- Time Taken: Prints the execution time of the genetic algorithm.
-- SVG File: Saves the best route visualization to best_route.svg.
-
-```bash
+```
 Best Route Found:
 Total Distance: 10345.67
 Route: New York (0) -> Tokyo (1) -> Sydney (2) -> New York (0)
 Time taken: 12.34 seconds
-
-Options:
-1. Back to City Selection
-2. Back to Database Selection
-3. Save Route Visualization
-4. Exit the Program
 ```
+
+## Visualization
+
+After execution, the best route is saved as an SVG file named best_route.svg. This file includes all cities, their labels, and the optimal path drawn based on their coordinates. The start and end city is visually highlighted.
 
 ## Key Functions
 
-- `genetic_algorithm()`: Core implementation of the genetic algorithm.
-- `initialize_population()`: Creates an initial population of routes.
-- `mutate()`: Mutates a route for diversity.
-- `crossover()`: Combines parent routes to produce offspring.
-- `print_best_route()`: Displays the optimal route.
-- `save_route_visualization()`: Exports the route to an SVG file.
+- genetic_algorithm: Main genetic algorithm loop
+- initialize_population: Initial population of routes
+- crossover: Combine two parent routes to create a child
+- mutate: Apply mutation to enhance diversity
+- calculate_route_fitness: Evaluate route distance and fitness
+- save_route_visualization: Generate SVG representation of the best path
 
-## Enhacements
+## Future Enhancements
 
-Future improvements could include:
+- Parallelization to improve execution time
+- GUI interface for city selection and visualization
+- Improved scaling for visualization of larger datasets
+- Input and output enhancements for better flexibility
 
-- Support for multi-threading to optimize execution time.
-- Dynamic SVG scaling for larger datasets.
-- Configurable city coordinate ranges.
-## Licence
+## License
 
-This program is open-source and can be freely used and modified for educational and research purposes.
+This project is open-source and free to use for educational and research purposes.
+
+## Repository
+
+GitHub: https://github.com/chetan-coep/Gen-algorithm-to-solve-tsp
+
+## Author
+
+Chetan Kamble  
+Second-year Computer Science Engineering student  
+COEP Technological University (formerly College of Engineering, Pune)
